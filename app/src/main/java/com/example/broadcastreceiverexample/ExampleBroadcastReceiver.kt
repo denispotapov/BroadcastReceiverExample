@@ -10,12 +10,13 @@ class ExampleBroadcastReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context?, intent: Intent?) {
 
-        if(Intent.ACTION_BOOT_COMPLETED == intent?.action) {
-            Toast.makeText(context, "Boot completed", Toast.LENGTH_SHORT).show()
-        }
-
         if (ConnectivityManager.CONNECTIVITY_ACTION == intent?.action) {
-            Toast.makeText(context, "Connectivity changed", Toast.LENGTH_SHORT).show()
+            val noConnectivity =
+                intent.getBooleanExtra(ConnectivityManager.EXTRA_NO_CONNECTIVITY, false)
+
+            if (noConnectivity) {
+                Toast.makeText(context, "Disconnected", Toast.LENGTH_SHORT).show()
+            } else Toast.makeText(context, "Connected", Toast.LENGTH_SHORT).show()
         }
     }
 }
