@@ -1,9 +1,8 @@
 package com.example.broadcastreceiverexample
 
 import android.content.IntentFilter
-import android.net.ConnectivityManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -12,16 +11,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-    }
 
-    override fun onStart() {
-        super.onStart()
-        val filter = IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
+        val filter = IntentFilter("com.example.broadcastreceiverexample.EXAMPLE_ACTION")
         registerReceiver(exampleBroadcastReceiver, filter)
     }
 
-    override fun onStop() {
-        super.onStop()
+    override fun onDestroy() {
+        super.onDestroy()
         unregisterReceiver(exampleBroadcastReceiver)
     }
 }
