@@ -17,9 +17,16 @@
             </intent-filter>
         </activity>
         <receiver
-            android:name=".ExampleBroadcastReceiver"
-            android:exported="true" >
-            <intent-filter>
+            android:name=".OrderedReceiver2">
+            <intent-filter
+                android:priority="2">
+                <action android:name="com.example.broadcastreceiverexample.ACTION_EXAMPLE"/>
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".OrderedReceiver3">
+            <intent-filter
+                android:priority="3">
                 <action android:name="com.example.broadcastreceiverexample.ACTION_EXAMPLE"/>
             </intent-filter>
         </receiver>
