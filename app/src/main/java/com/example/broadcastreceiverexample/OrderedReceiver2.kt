@@ -25,7 +25,5 @@ class OrderedReceiver2 : BroadcastReceiver() {
         resultExtras.putString("stringExtra", stringExtra)
 
         setResult(resultCode, resultData, resultExtras)
-
-        abortBroadcast()
     }
 }

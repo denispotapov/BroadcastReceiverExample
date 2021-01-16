@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.broadcastreceiverexample">
+    
+    <permission android:name="com.example.broadcastreceiverexample.CUSTOM_PERMISSION"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
 
     <application
         android:allowBackup="true"
@@ -17,14 +20,16 @@
             </intent-filter>
         </activity>
         <receiver
-            android:name=".OrderedReceiver2">
+            android:name=".OrderedReceiver2"
+            android:permission="android.permission.INTERNET">
             <intent-filter
                 android:priority="2">
                 <action android:name="com.example.broadcastreceiverexample.ACTION_EXAMPLE"/>
             </intent-filter>
         </receiver>
         <receiver
-            android:name=".OrderedReceiver3">
+            android:name=".OrderedReceiver3"
+            android:permission="com.example.broadcastreceiverexample.CUSTOM_PERMISSION">
             <intent-filter
                 android:priority="3">
                 <action android:name="com.example.broadcastreceiverexample.ACTION_EXAMPLE"/>
